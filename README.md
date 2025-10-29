@@ -1,20 +1,17 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+OnePunchConvert: Universal Unit Converter
+⚠️ Disclaimer
+THIS APPLICATION IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
 
-# Run and deploy your AI Studio app
+🚨 Important Notice
+Use at your own risk - The developers are not responsible for any inaccuracies in conversions
 
-This contains everything you need to run your app locally.
+No guarantee of accuracy - While we strive for precision, unit conversions may contain errors
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Hi8DVf4X3Y41jQNnhL9vtkhLjLKYn2Jr
+Critical applications - Do not use for medical, engineering, financial, or safety-critical calculations
 
-## Run Locally
+Always verify - Double-check important conversions with reliable sources
 
-**Prerequisites:**  Node.js
+Educational purposes - This tool is primarily intended for educational and general reference use
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+📋 About
+OnePunchConvert is a universal unit converter web application featuring Saitama from One-Punch Man. Convert between various units including length, weight, volume, temperature, area, speed, time, and more.

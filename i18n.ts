@@ -2,7 +2,7 @@
 import type { Language, Translation } from './types';
 
 export const translations = {
-    appName: { ru: "OmniConvert", en: "OmniConvert" },
+    appName: { ru: "OnePunchConvert", en: "OnePunchConvert" },
     appSlogan: { ru: "Единый Конвертер для Всего", en: "The Universal Converter for Everything" },
     appDescription: { ru: "Мощный и элегантный инструмент для мгновенного преобразования тысяч единиц из сотен категорий. От буровой установки до вашей кухни — все в одном месте.", en: "A powerful and elegant tool for instantly converting thousands of units across hundreds of categories. From the drilling rig to your kitchen—everything in one place." },
     getStarted: { ru: "Начать", en: "Get Started" },
