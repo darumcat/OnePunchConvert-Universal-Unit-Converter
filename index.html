@@ -34,91 +34,91 @@
       }
     </script>
     <style>
-      :root {
-        --accent-color: #e21f26;
-        /* Saitama PNG images */
-        --bg-saitama-length: url("/assets/saitama-length.png");
-        --bg-saitama-weight: url("/assets/saitama-weight.png");
-        --bg-saitama-volume: url("/assets/saitama-volume.png");
-        --bg-saitama-temperature: url("/assets/saitama-temperature.png");
-        --bg-saitama-area: url("/assets/saitama-area.png");
-        --bg-saitama-speed: url("/assets/saitama-speed.png");
-        --bg-saitama-time: url("/assets/saitama-time.png");
-        --bg-saitama-pressure: url("/assets/saitama-pressure.png");
-        --bg-saitama-energy: url("/assets/saitama-energy.png");
-        --bg-saitama-data: url("/assets/saitama-data.png");
-        --bg-saitama-drilling: url("/assets/saitama-drilling.png");
-        --bg-saitama-cooking: url("/assets/saitama-cooking.png");
-        --bg-saitama-geometry: url("/assets/saitama-geometry.png");
-        --bg-saitama-science: url("/assets/saitama-science.png");
-      }
+  :root {
+    --accent-color: #e21f26;
+    /* Saitama PNG images */
+    --bg-saitama-length: url("/assets/saitama-length.png");
+    --bg-saitama-weight: url("/assets/saitama-weight.png");
+    --bg-saitama-volume: url("/assets/saitama-volume.png");
+    --bg-saitama-temperature: url("/assets/saitama-temperature.png");
+    --bg-saitama-area: url("/assets/saitama-area.png");
+    --bg-saitama-speed: url("/assets/saitama-speed.png");
+    --bg-saitama-time: url("/assets/saitama-time.png");
+    --bg-saitama-pressure: url("/assets/saitama-pressure.png");
+    --bg-saitama-energy: url("/assets/saitama-energy.png");
+    --bg-saitama-data: url("/assets/saitama-data.png");
+    --bg-saitama-drilling: url("/assets/saitama-drilling.png");
+    --bg-saitama-cooking: url("/assets/saitama-cooking.png");
+    --bg-saitama-geometry: url("/assets/saitama-geometry.png");
+    --bg-saitama-science: url("/assets/saitama-science.png");
+  }
 
-      html, body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-      }
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
 
-      body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        background-repeat: no-repeat;
-        background-position: center 80%; /* Смещено ниже */
-        background-size: 280px auto; /* Увеличено для лучшей видимости */
-        opacity: 0;
-        z-index: -1;
-        transition: opacity 0.5s ease-in-out, background-image 0.5s ease-in-out;
-        pointer-events: none;
-      }
-      
-      body.saitama-length::before, body.saitama-weight::before, body.saitama-volume::before, body.saitama-temperature::before, body.saitama-area::before, body.saitama-speed::before, body.saitama-time::before, body.saitama-pressure::before, body.saitama-energy::before, body.saitama-data::before, body.saitama-drilling::before, body.saitama-cooking::before, body.saitama-geometry::before, body.saitama-science::before {
-        opacity: 0.35; /* Увеличена прозрачность */
-      }
-      
-      .dark body::before {
-        opacity: 0; 
-      }
-      
-      .dark body.saitama-length::before, .dark body.saitama-weight::before, .dark body.saitama-volume::before, .dark body.saitama-temperature::before, .dark body.saitama-area::before, .dark body.saitama-speed::before, .dark body.saitama-time::before, .dark body.saitama-pressure::before, .dark body.saitama-energy::before, .dark body.saitama-data::before, .dark body.saitama-drilling::before, .dark body.saitama-cooking::before, .dark body.saitama-geometry::before, .dark body.saitama-science::before {
-        opacity: 0.3; /* Увеличена прозрачность для темной темы */
-        filter: invert(1) brightness(1.1); /* Улучшена видимость в темной теме */
-      }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center 80%; /* Смещено ниже */
+    background-size: auto 400px; /* ФИКСИРОВАННАЯ ВЫСОТА 400px */
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s ease-in-out, background-image 0.5s ease-in-out;
+    pointer-events: none;
+  }
+  
+  body.saitama-length::before, body.saitama-weight::before, body.saitama-volume::before, body.saitama-temperature::before, body.saitama-area::before, body.saitama-speed::before, body.saitama-time::before, body.saitama-pressure::before, body.saitama-energy::before, body.saitama-data::before, body.saitama-drilling::before, body.saitama-cooking::before, body.saitama-geometry::before, body.saitama-science::before {
+    opacity: 0.35; /* Увеличена прозрачность */
+  }
+  
+  .dark body::before {
+    opacity: 0; 
+  }
+  
+  .dark body.saitama-length::before, .dark body.saitama-weight::before, .dark body.saitama-volume::before, .dark body.saitama-temperature::before, .dark body.saitama-area::before, .dark body.saitama-speed::before, .dark body.saitama-time::before, .dark body.saitama-pressure::before, .dark body.saitama-energy::before, .dark body.saitama-data::before, .dark body.saitama-drilling::before, .dark body.saitama-cooking::before, .dark body.saitama-geometry::before, .dark body.saitama-science::before {
+    opacity: 0.3; /* Увеличена прозрачность для темной темы */
+    filter: invert(1) brightness(1.1); /* Улучшена видимость в темной теме */
+  }
 
-      body.saitama-length::before { background-image: var(--bg-saitama-length); }
-      body.saitama-weight::before { background-image: var(--bg-saitama-weight); }
-      body.saitama-volume::before { background-image: var(--bg-saitama-volume); }
-      body.saitama-temperature::before { background-image: var(--bg-saitama-temperature); }
-      body.saitama-area::before { background-image: var(--bg-saitama-area); }
-      body.saitama-speed::before { background-image: var(--bg-saitama-speed); }
-      body.saitama-time::before { background-image: var(--bg-saitama-time); }
-      body.saitama-pressure::before { background-image: var(--bg-saitama-pressure); }
-      body.saitama-energy::before { background-image: var(--bg-saitama-energy); }
-      body.saitama-data::before { background-image: var(--bg-saitama-data); }
-      body.saitama-drilling::before { background-image: var(--bg-saitama-drilling); }
-      body.saitama-cooking::before { background-image: var(--bg-saitama-cooking); }
-      body.saitama-geometry::before { background-image: var(--bg-saitama-geometry); }
-      body.saitama-science::before { background-image: var(--bg-saitama-science); }
+  body.saitama-length::before { background-image: var(--bg-saitama-length); }
+  body.saitama-weight::before { background-image: var(--bg-saitama-weight); }
+  body.saitama-volume::before { background-image: var(--bg-saitama-volume); }
+  body.saitama-temperature::before { background-image: var(--bg-saitama-temperature); }
+  body.saitama-area::before { background-image: var(--bg-saitama-area); }
+  body.saitama-speed::before { background-image: var(--bg-saitama-speed); }
+  body.saitama-time::before { background-image: var(--bg-saitama-time); }
+  body.saitama-pressure::before { background-image: var(--bg-saitama-pressure); }
+  body.saitama-energy::before { background-image: var(--bg-saitama-energy); }
+  body.saitama-data::before { background-image: var(--bg-saitama-data); }
+  body.saitama-drilling::before { background-image: var(--bg-saitama-drilling); }
+  body.saitama-cooking::before { background-image: var(--bg-saitama-cooking); }
+  body.saitama-geometry::before { background-image: var(--bg-saitama-geometry); }
+  body.saitama-science::before { background-image: var(--bg-saitama-science); }
 
-      /* Адаптивность для мобильных устройств */
-      @media (max-width: 400px) {
-        body::before {
-          background-size: 200px auto; /* Меньше на мобильных */
-          background-position: center 70%; /* Еще ниже на мобильных */
-        }
-      }
+  /* Адаптивность для мобильных устройств */
+  @media (max-width: 768px) {
+    body::before {
+      background-size: auto 300px; /* Уменьшаем высоту на планшетах */
+      background-position: center 75%;
+    }
+  }
 
-      @media (max-width: 480px) {
-        body::before {
-          background-size: 160px auto; /* Еще меньше на очень маленьких экранах */
-          background-position: center 75%;
-        }
-      }
-    </style>
+  @media (max-width: 480px) {
+    body::before {
+      background-size: auto 200px; /* Еще меньше на телефонах */
+      background-position: center 80%;
+    }
+  }
+</style>
   <script type="importmap">
 {
   "imports": {
