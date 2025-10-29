@@ -68,8 +68,8 @@
     height: 100%;
     background-color: transparent;
     background-repeat: no-repeat;
-    background-position: center 80%; /* Смещено ниже */
-    background-size: auto 300px; /* ФИКСИРОВАННАЯ ВЫСОТА 300px */
+    background-position: center 90%; /* Смещено ниже */
+    background-size: auto 280px; /* ФИКСИРОВАННАЯ ВЫСОТА 280px */
     opacity: 0;
     z-index: -1;
     transition: opacity 0.5s ease-in-out, background-image 0.5s ease-in-out;
@@ -108,14 +108,14 @@
   @media (max-width: 768px) {
     body::before {
       background-size: auto 300px; /* Уменьшаем высоту на планшетах */
-      background-position: center 85%;
+      background-position: center 90%;
     }
   }
 
   @media (max-width: 480px) {
     body::before {
       background-size: auto 200px; /* Еще меньше на телефонах */
-      background-position: center 80%;
+      background-position: center 90%;
     }
   }
 </style>
