@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OmniConvert: Universal Unit Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              accent: 'var(--accent-color, #e21f26)',
+              'opm-yellow': '#fecf02',
+              'opm-red': '#e21f26',
+              'opm-white': '#ffffff',
+              'opm-cape-white': '#f8f8f8',
+              'opm-dark': '#1a1a1a',
+              'opm-dark-component': '#242424',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-in-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --accent-color: #e21f26;
+        /* Saitama SVGs - Embedded as Base64 Data URIs for maximum compatibility */
+        --bg-saitama-length: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWdsb3Zlcywucy1ib290c3tmaWxsOiNlMjFmMjZ9LnMtc2tpbntmaWxsOiNmY2UzYzR9LnMtbGluZXtmaWxsOm5vbmU7c3Ryb2tlOiMyNDI0MjQ7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kfS5zLXJ1bGVye2ZpbGw6I2ZlY2YwMjtzdHJva2U6IzI0MjQyNDtzdHJva2Utd2lkdGg6Mn08L3N0eWxlPjwvZGVmcz48Zz48IS0tIFJ1bGVyIC0tPjxyZWN0IHg9IjEwIiB5PSIxNTAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjAiIGNsYXNzPSJzLXJ1bGVyIi8+PHBhdGggZD0iTTIwIDE1MHYtNSBNMzAgMTUwdi0xMCBNNDAgMTUwdi01IE01MCAxNTB2LTE1IE02MCAxNTB2LTUgTTcwIDE1MHYtMTAgTTgwIDE1MHYtNSBNOTAgMTUwdi0xMCBNMTAwIDE1MHYtMTUgTTExMCAxNTB2LTUgTTEyMCAxNTB2LTEwIE0xMzAgMTUwdi01IE0xNDAgMTUwdi0xMCBNMTUwIDE1MHYtMTUgTTE2MCAxNTB2LTUgTTE3MCAxNTB2LTEwIE0xODAgMTUwdi01IiBzdHJva2U9IiMyNDI0MjQiIHN0cm9rZS13aWR0aD0iMS41Ii8+PCEtLSBTYWl0YW1hIC0tPjxnIGNsYXNzPSJzLWxpbmUiPjxwYXRoIGNsYXNzPSJzLWNhcGUiIGQ9Ik0xMDAgNzAgcS0yMCA4MCAwIDEwMCBxMjAgLTIwIDAgLTEwMHoiLz48Y2lyY2xlIGN4PSIxMDAiIGN5PSI2MCIgcj0iMjAiIGNsYXNzPSJzLXNraW4iLz48cGF0aCBkPSJNOTUsNTggYTEsMSAwIDEsMSAwLC0wLjAxIE0xMDUsNTggYTEsMSAwIDEsMSAwLC0wLjAxIi8+PHBhdGggZD0iTTEwMCw2NSBhMywzIDAgMCwwIDAsMiIvPjxyZWN0IHg9Ijg1IiB5PSI4MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjUwIiBjbGFzcz0icy1ib2R5Ii8+PHJlY3QgeD0iODUiIHk9IjEzMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjE1IiBjbGFzcz0icy1ib290cyIvPjxyZWN0IHg9IjEwMyIgeT0iMTMwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTUiIGNsYXNzPSJzLWJvb3RzIi8+PHBhdGggZD0iTTg1IDk1IGwtMjAgLTUiLz48Y2lyY2xlIGN4PSI2NSIgY3k9IjkwIiByPSIxMCIgY2xhc3M9InMtZ2xvdmVzIi8+PHBhdGggZD0iTTExNSA5NSBsMjAgLTUiLz48Y2lyY2xlIGN4PSIxMzUiIGN5PSI5MCIgcj0iMTAiIGNsYXNzPSJzLWdsb3ZlcyIvPjwvZz48L2c+PC9zdmc+");
+        --bg-saitama-weight: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWJvb3Rze2ZpbGw6I2UyMWYyNn0ucy1za2lue2ZpbGw6I2ZjZTNjNH0ucy1saW5le2ZpbGw6bm9uZTtzdHJva2U6IzI0MjQyNDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmR9PC9zdHlsZT48L2RlZnM+PGcgY2xhc3M9InMtbGluZSI+PCEtLSBFeHBsb2RlZCBTY2FsZSAtLT48cGF0aCBkPSJNNDAsMTgwIEwxNjAsMTgwIEwxNTAsMTUwIEw1MCwxNTAgWiIgZmlsbD0iI2NjYyIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEyMCIgcj0iNDAiIGZpbGw9IiMyNDI0MjQiLz48cGF0aCBkPSJNMTAwLDEyMCBsMjAtMjAiIHN0cm9rZT0iI2YwMCIgc3Ryb2tlLXdpZHRoPSIzIi8+PHRleHQgeD0iMTAwIiB5PSIxMTUiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmMDAiIHRyYW5zZm9ybT0icm90YXRlKC0xNSAxMDAgMTIwKSI+T1ZFUiA5MDAwPC90ZXh0PjxwYXRoIGQ9Ik05MCwxNTAgbC0zMC0zMCBtODAsMCBsMzAtMzAgbS0zMCwxMCBsLTIwLDI1IG0yMC0xNSBsMjAsMjAiIHN0cm9rZT0iI2UyMWYyNiIgc3Ryb2tlLXdpZHRoPSIzIi8+PCEtLSBTYWl0YW1hIC0tPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTIwKSI+PHBhdGggY2xhc3M9InMtY2FwZSIgZD0iTTEwMCA3MCBxLTIwIDgwIDAgMTAwIHEyMCAtMjAgMCAtMTAweiIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjYwIiByPSIyMCIgY2xhc3M9InMtc2tpbiIvPjxwYXRoIGQ9Ik05NSw1OCBhMSwxIDAgMSwxIDAsLTAuMDEgTTEwNSw1OCBhMSwxIDAgMSwxIDAsLTAuMDEiLz48cGF0aCBkPSJNMTAwLDY1IGEzLDMgMCAwLDAgMCwyIi8+PHJlY3QgeD0iODUiIHk9IjgwIiB3aWR0aD0iMzAiIGhlaWdodD0iNTAiIGNsYXNzPSJzLWJvZHkiLz48cmVjdCB4PSI4NSIgeT0iMTMwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTUiIGNsYXNzPSJzLWJvb3RzIi8+PHJlY3QgeD0iMTAzIiB5PSIxMzAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNSIgY2xhc3M9InMtYm9vdHMiLz48L2c+PC9nPjwvc3ZnPg==");
+        --bg-saitama-volume: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWdsb3Zlc3tmaWxsOiNlMjFmMjZ9LnMtc2tpbntmaWxsOiNmY2UzYzR9LnMtbGluZXtmaWxsOm5vbmU7c3Ryb2tlOiMyNDI0MjQ7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kfTwvc3R5bGU+PC9kZWZzPjxnIGNsYXNzPSJzLWxpbmUiPjwhLS0gQmVha2VyIC0tPjxwYXRoIGQ9Ik00MCwzMCBMNDAsMTYwIGExMCwxMCAwIDAsMCAxMCwxMCBoMTAwIGExMCwxMCAwIDAsMCAxMCwtMTAgVjMwIiBmaWxsPSJyZ2JhKDE3MywyMTYsMjMwLDAuNSkiLz48cGF0aCBkPSJNNDAsMzAgTDE2MCwzMCIvPjxwYXRoIGQ9Ik01MCw2MCBoMTAwIE01MCw5MCBoMTAwIE01MCwxMjAgaDEwMCIgc3Ryb2tlPSIjODhjMGYwIiBzdHJva2UtZGFzaGFycmF5PSI0Ii8+PCEtLSBTYWl0YW1hIGxvb2tpbmcgaW4gLS0+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAwIDkwKSI+PHBhdGggY2xhc3M9InMtY2FwZSIgZD0iTTAsMCBsLTE1LDQwIGgzMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIC0yNSkiLz48cmVjdCB4PSItMTUiIHk9Ii01IiB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIGNsYXNzPSJzLWJvZHkiLz48Y2lyY2xlIGN4PSIwIiBjeT0iLTIwIiByPSIxNSIgY2xhc3M9InMtc2tpbiIvPjxwYXRoIGQ9Ik0tNSwtMjIgYTEsMSAwIDEsMSAwLC0wLjAxIE01LC0yMiBhMSwxIDAgMSwxIDAsLTAuMDEiLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjUiIHI9IjgiIGNsYXNzPSJzLWdsb3ZlcyIvPjxjaXJjbGUgY3g9Ii0yNSIgY3k9IjUiIHI9IjgiIGNsYXNzPSJzLWdsb3ZlcyIvPjxwYXRoIGQ9Ik0tMTUgNSBMLTI1IDUgTTE1IDUgTDI1IDUiLz48L2c+PC9nPjwvc3ZnPg==");
+        --bg-saitama-temperature: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWJvb3Rze2ZpbGw6I2UyMWYyNn0ucy1za2lue2ZpbGw6I2ZjZTNjNH0ucy1saW5le2ZpbGw6bm9uZTtzdHJva2U6IzI0MjQyNDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmR9PC9zdHlsZT48L2RlZnM+PGcgY2xhc3M9InMtbGluZSI+PCEtLSBGaXJlIGFuZCBJY2UgLS0+PHBhdGggZD0iTTEwLDE4MCBDNDAsMTIwIDIwLDYwIDUwLDIwIEMgODAsNjAgNjAsMTIwIDkwLDE4MCB6IiBmaWxsPSJyZ2JhKDI1NSwxMDAsMCwwLjYpIi8+PHBhdGggZD0iTTE5MCwxODAgQzE2MCwxMjAgMTgwLDYwIDE1MCwyMCBDIDEyMCw2MCAxNDAsMTIwIDExMCwxODAgeiIgZmlsbD0icmdiYSgwLDE4MCwyNTUsMC42KSIvPjwhLS0gU2FpdGFtYSAtLT48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDIwKSI+PHBhdGggY2xhc3M9InMtY2FwZSIgZD0iTTEwMCA3MCBxLTIwIDgwIDAgMTAwIHEyMCAtMjAgMCAtMTAweiIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjYwIiByPSIyMCIgY2xhc3M9InMtc2tpbiIvPjxwYXRoIGQ9Ik05NSw1OCBhMSwxIDAgMSwxIDAsLTAuMDEgTTEwNSw1OCBhMSwxIDAgMSwxIDAsLTAuMDEiLz48cGF0aCBkPSJNOTUsNjUgaDEwIi8+PHJlY3QgeD0iODUiIHk9IjgwIiB3aWR0aD0iMzAiIGhlaWdodD0iNTAiIGNsYXNzPSJzLWJvZHkiLz48cmVjdCB4PSI4NSIgeT0iMTMwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTUiIGNsYXNzPSJzLWJvb3RzIi8+PHJlY3QgeD0iMTAzIiB5PSIxMzAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNSIgY2xhc3M9InMtYm9vdHMiLz48L2c+PC9nPjwvc3ZnPg==");
+        --bg-saitama-area: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWdsb3Zlc3tmaWxsOiNlMjFmMjZ9LnMtc2tpbntmaWxsOiNmY2UzYzR9LnMtbGluZXtmaWxsOm5vbmU7c3Ryb2tlOiMyNDI0MjQ7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kfTwvc3R5bGU+PC9kZWZzPjxnIGNsYXNzPSJzLWxpbmUiPjwhLS0gV2FsbCB3aXRoIGhvbGUgLS0+PHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2FhYSIvPjxwYXRoIGQ9Ik0xMDAsMTAwIG0tNDAsMCBhNDAsNDAgMCAxLDAgODAsMCBhNDAsNDAgMCAxLDAgLTgwLDAiIGZpbGw9IiMyNDI0MjQiLz48cGF0aCBkPSJNMTAwLDEwMCBsMzAsMzAgbS01LCAtNDUgbDIwLDEwIG0tNTUsLTE1IGwxNSwyNSIgc3Ryb2tlPSIjNTU1Ii8+PCEtLSBTYWl0YW1hIC0tPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQwLDQwKSByb3RhdGUoMTApIj48cGF0aCBjbGFzcz0icy1jYXBlIiBkPSJNMTAwLDk1IEw5MCwxNTUgTDExMCwxNTUgWiIvPjxyZWN0IHg9Ijg1IiB5PSIxMDUiIHdpZHRoPSIzMCIgaGVpZ2h0PSI0NSIgY2xhc3M9InMtYm9keSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9Ijg1IiByPSIyMCIgY2xhc3M9InMtc2tpbiIvPjxwYXRoIGQ9Ik05NSw4MyBhMSwxIDAgMSwxIDAsLTAuMDEgTTEwNSw4MyBhMSwxIDAgMSwxIDAsLTAuMDEiLz48cGF0aCBkPSJNOTUsOTAgaDEwIi8+PHBhdGggZD0iTTg1LDEyMCBsLTYwLC0yMCIvPjxjaXJjbGUgY3g9IjI1IiBjeT0iMTAwIiByPSIxMiIgY2xhc3M9InMtZ2xvdmVzIi8+PC9nPjwvZz48L3N2Zz4=");
+        --bg-saitama-speed: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWJvb3Rze2ZpbGw6I2UyMWYyNn0ucy1za2lue2ZpbGw6I2ZjZTNjNH0ucy1saW5le2ZpbGw6bm9uZTtzdHJva2U6IzI0MjQyNDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmR9PC9zdHlsZT48L2RlZnM+PGcgY2xhc3M9InMtbGluZSI+PCEtLSBBZnRlcmltYWdlcyAtLT48ZyBvcGFjaXR5PSIwLjMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02MCwgNSkiPjxwYXRoIGQ9Ik0xNDAsOTUgdjI1IGwtMTUsMTUiIGNsYXNzPSJzLWJvZHkiIHN0cm9rZS13aWR0aD0iMjAiLz48cGF0aCBkPSJNMTQwLDEyMCBsMTUsMTUiIGNsYXNzPSJzLWJvZHkiIHN0cm9rZS13aWR0aD0iMjAiLz48L2c+PGcgb3BhY2l0eT0iMC42IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzAsIC01KSI+PHBhdGggZD0iTTE0MCw5NSB2MjUgbC0xNSwxNSIgY2xhc3M9InMtYm9keSIgc3Ryb2tlLXdpZHRoPSIyMCIvPjxwYXRoIGQ9Ik0xNDAsMTIwIGwxNSwxNSIgY2xhc3M9InMtYm9keSIgc3Ryb2tlLXdpZHRoPSIyMCIvPjwvZz48IS0tIFNhaXRhbWEgLS0+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAsMCkiPjxwYXRoIGNsYXNzPSJzLWNhcGUiIGQ9Ik0xNDAsOTUgTDEyMCwxNTAgTDE2MCwxNTAgWiIvPjxjaXJjbGUgY3g9IjE0MCIgY3k9IjgwIiByPSIxNSIgY2xhc3M9InMtc2tpbiIvPjxwYXRoIGQ9Ik0xMzcsNzggYTEsMSAwIDEsMSAwLC0wLjAxIE0xNDMsNzggYTEsMSAwIDEsMSAwLC0wLjAxIi8+PHBhdGggZD0iTTEzNSw4MyBoMTAiLz48cGF0aCBkPSJNMTQwLDk1IHMyNSBsLTE1LDE1IiBjbGFzcz0icy1ib2R5IiBzdHJva2Utd2lkdGg9IjIwIi8+PHJlY3QgeD0iMTIwIiB5PSIxMzUiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgY2xhc3M9InMtYm9vdHMiLz48cGF0aCBkPSJNMTQwLDEyMCBsMTUsMTUiIGNsYXNzPSJzLWJvZHkiIHN0cm9rZS13aWR0aD0iMjAiLz48cmVjdCB4PSIxNTAiIHk9IjEzNSIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBjbGFzcz0icy1ib290cyIvPjwvZz48L2c+PC9zdmc+");
+        --bg-saitama-time: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWJvb3Rze2ZpbGw6I2UyMWYyNn0ucy1za2lue2ZpbGw6I2ZjZTNjNH0ucy1saW5le2ZpbGw6bm9uZTtzdHJva2U6IzI0MjQyNDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmR9PC9zdHlsZT48L2RlZnM+PGcgY2xhc3M9InMtbGluZSI+PCEtLSBNZWx0aW5nIENsb2NrIC0tPjxwYXRoIGQ9Ik00MCw4MCBhNDAsNDAgMCAxLDAgODAsMCBhMjAsMjAgMCAxLDEgLTgwLDAiIGZpbGw9IiNmNWY1ZjUiLz48cGF0aCBkPSJNODAsODAgTDgwLDUwIE04MCw4MCBMMTAwLDkwIi8+PHBhdGggZD0iTTEyMCw4MCBRMTMwLDEyMCAxMDAsMTQwIFQ2MCwxODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Y1ZjVmNSIgc3Ryb2tlLXdpZHRoPSIxNSIvPjwhLS0gU2FpdGFtYSAtLT48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MCwgMjApIj48cGF0aCBjbGFzcz0icy1jYXBlIiBkPSJNMTAwIDcwIHEtMjAgODAgMCAxMDAgcTIwIC0yMCAwIC0xMDB6Ii8+PGNpcmNsZSBjeD0iMTAwIiBjeT0iNjAiIHI9IjIwIiBjbGFzcz0icy1za2luIi8+PHBhdGggZD0iTTk1LDU4IGExLDEgMCAxLDEgMCwtMC4wMSBNMTA1LDU4IGExLDEgMCAxLDEgMCwtMC4wMSIvPjxwYXRoIGQ9Ik05OCw2NSBoNCIvPjxyZWN0IHg9Ijg1IiB5PSI4MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjUwIiBjbGFzcz0icy1ib2R5Ii8+PHJlY3QgeD0iODUiIHk9IjEzMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjE1IiBjbGFzcz0icy1ib290cyIvPjxyZWN0IHg9IjEwMyIgeT0iMTMwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTUiIGNsYXNzPSJzLWJvb3RzIi8+PC9nPjwvZz48L3N2Zz4=");
+        --bg-saitama-pressure: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWdsb3Zlc3tmaWxsOiNlMjFmMjZ9LnMtc2tpbntmaWxsOiNmY2UzYzR9LnMtbGluZXtmaWxsOm5vbmU7c3Ryb2tlOiMyNDI0MjQ7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kfTwvc3R5bGU+PC9kZWZzPjxnIGNsYXNzPSJzLWxpbmUiPjwhLS0gUHJlc3N1cmUgV2F2ZXMgLS0+PHBhdGggZD0iTTgwLDEwMCBhMjAsMjAgMCAwLDEgMCwtNDAgYTIwLDIwIDAgMCwxIDAsNDAiIG9wYWNpdHk9IjAuOCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04MCwwKSIvPjxwYXRoIGQ9Ik04MCwxMDAgYTMwLDMwIDAgMCwxIDAsLTYwIGEzMCwzMCAwIDAsMSAwLDYwIiBvcGFjaXR5PSIwLjYiIHN0cm9rZS13aWR0aD0iMS41IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtODAsMCkiLz48cGF0aCBkPSJNODAsMTAwIGE0MCw0MCAwIDAsMSAwLC04MCBhNDAsNDAgMCAwLDEgMCw4MCIgb3BhY2l0eT0iMC40IiBzdHJva2Utd2lkdGg9IjEuNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTgwLDApIi8+PCEtLSBTYWl0YW1hIC0tPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQwLDQwKSByb3RhdGUoMTApIj48cGF0aCBjbGFzcz0icy1jYXBlIiBkPSJNMTAwLDk1IEw5MCwxNTUgTDExMCwxNTUgWiIvPjxyZWN0IHg9Ijg1IiB5PSIxMDUiIHdpZHRoPSIzMCIgaGVpZ2h0PSI0NSIgY2xhc3M9InMtYm9keSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9Ijg1IiByPSIyMCIgY2xhc3M9InMtc2tpbiIvPjxwYXRoIGQ9Ik05NSw4MyBhMSwxIDAgMSwxIDAsLTAuMDEgTTEwNSw4MyBhMSwxIDAgMSwxIDAsLTAuMDEiLz48cGF0aCBkPSJNOTUsOTAgaDEwIi8+PHBhdGggZD0iTTg1LDEyMCBsLTYwLC0yMCIvPjxjaXJjbGUgY3g9IjI1IiBjeT0iMTAwIiByPSIxMiIgY2xhc3M9InMtZ2xvdmVzIi8+PC9nPjwvZz48L3N2Zz4=");
+        --bg-saitama-energy: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImdyYWQiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSIgZng9IjUwJSIgZnk9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZlY2YwMiIgc3RvcC1vcGFjaXR5PSIxIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZTIxZjI2IiBzdG9wLW9wYWNpdHk9IjAuMyIvPjwvcmFkaWFsR3JhZGllbnQ+PHN0eWxlPi5zLWJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWdsb3Zlc3tmaWxsOiNlMjFmMjZ9LnMtc2tpbntmaWxsOiNmY2UzYzR9LnMtbGluZXtmaWxsOm5vbmU7c3Ryb2tlOiMyNDI0MjQ7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kfTwvc3R5bGU+PC9kZWZzPjxnPjwhLS0gRW5lcmd5IEF1cmEgLS0+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI5MCIgZmlsbD0idXJsKCNncmFkKSIgb3BhY2l0eT0iMC42Ii8+PGcgY2xhc3M9InMtbGluZSI+PCEtLSBTYWl0YW1hIC0tPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMjApIj48cGF0aCBjbGFzcz0icy1jYXBlIiBkPSJNMTAwLDk1IEw5MCwxNTUgTDExMCwxNTUgWiIvPjxyZWN0IHg9Ijg1IiB5PSIxMDUiIHdpZHRoPSIzMCIgaGVpZ2h0PSI0NSIgY2xhc3M9InMtYm9keSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9Ijg1IiByPSIyMCIgY2xhc3M9InMtc2tpbiIvPjxwYXRoIGQ9Ik05NSw4MyBhMSwxIDAgMSwxIDAsLTAuMDEgTTEwNSw4MyBhMSwxIDAgMSwxIDAsLTAuMDEiLz48cGF0aCBkPSJNOTIsOTAgYTUscyAwIDAsMCAxNiwwIi8+PHBhdGggZD0iTTg1LDEyMCBsLTIwLDAiLz48Y2lyY2xlIGN4PSI2NSIgY3k9IjEyMCIgcj0iMTIiIGNsYXNzPSJzLWdsb3ZlcyIvPjxwYXRoIGQ9Ik0xMTUsMTIwIGwyMCwwIi8+PGNpcmNsZSBjeD0iMTM1IiBjeT0iMTIwIiByPSIxMiIgY2xhc3M9InMtZ2xvdmVzIi8+PC9nPjwvZz48L2c+PC9zdmc+");
+        --bg-saitama-data: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWdsb3Zlc3tmaWxsOiNlMjFmMjZ9LnMtc2tpbntmaWxsOiNmY2UzYzR9LnMtbGluZXtmaWxsOm5vbmU7c3Ryb2tlOiMyNDI0MjQ7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kfTwvc3R5bGU+PC9kZWZzPjxnIGNsYXNzPSJzLWxpbmUiPjwhLS0gU2VydmVyIC0tPjxyZWN0IHg9IjMwIiB5PSI0MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjEyMCIgcng9IjUiIGZpbGw9IiNhYWEiLz48cGF0aCBkPSJNNDAsNjAgaDYwIE00MCw4MCBoNjAgTTQwLDE0MCBoNjAiIHN0cm9rZT0iIzU1NSIvPjxjaXJjbGUgY3g9IjQ1IiBjeT0iMTAwIiByPSIyIiBmaWxsPSJsaW1lIi8+PGNpcmNsZSBjeD0iNDUiIGN5PSIxMjAiIHI9IjIiIGZpbGw9InllbGxvdyIvPjwhLS0gU2FpdGFtYSAtLT48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MCwgMjApIj48cGF0aCBjbGFzcz0icy1jYXBlIiBkPSJNMTAwIDcwIHEtMjAgODAgMCAxMDAgcTIwIC0yMCAwIC0xMDB6Ii8+PGNpcmNsZSBjeD0iMTAwIiBjeT0iNjAiIHI9IjIwIiBjbGFzcz0icy1za2luIi8+PHBhdGggZD0iTTk1LDU4IGExLDEgMCAxLDEgMCwtMC4wMSBNMTA1LDU4IGExLDEgMCAxLDEgMCwtMC4wMSIvPjxwYXRoIGQ9Ik05OCw2NSBoNCIvPjxyZWN0IHg9Ijg1IiB5PSI4MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjUwIiBjbGFzcz0icy1ib2R5Ii8+PHRleHQgeD0iMTAwIiB5PSI0NSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPz88L3RleHQ+PC9nPjwvZz48L3N2Zz4=");
+        --bg-saitama-drilling: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWdsb3Zlc3tmaWxsOiNlMjFmMjZ9LnMtc2tpbntmaWxsOiNmY2UzYzR9LnMtbGluZXtmaWxsOm5vbmU7c3Ryb2tlOiMyNDI0MjQ7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kfTwvc3R5bGU+PC9kZWZzPjxnIGNsYXNzPSJzLWxpbmUiPjwhLS0gR3JvdW5kIC0tPjxwYXRoIGQ9Ik0wLDE1MCBDNDAsMTQwIDgwLDE2MCAxMjAsMTUwIEMxNjAsMTQwIDIwMCwxNjAgMjAwLDE2MCBWMTgwIEgwIFoiIGZpbGw9IiNhMDUyMmQiLz48cGF0aCBkPSJNMTAwLDE1MCB2NTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU0MiIgc3Ryb2tlLXdpZHRoPSIyMCIvPjwhLS0gU2FpdGFtYSAtLT48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLDYwKSI+PGNpcmNsZSBjeD0iMTAwIiBjeT0iNTAiIHI9IjIwIiBjbGFzcz0icy1za2luIi8+PHBhdGggZD0iTTk1LDQ4IGExLDEgMCAxLDEgMCwtMC4wMSBNMTA1LDQ4IGExLDEgMCAxLDEgMCwtMC4wMSIvPjxwYXRoIGQ9Ik05Miw1NSBhNSwyIDAgMCwwIDE2LDAiLz48cmVjdCB4PSI4NSIgeT0iNzAiIHdpZHRoPSIzMCIgaGVpZ2h0PSI0NSIgY2xhc3M9InMtYm9keSIvPjxwYXRoIGQ9Ik0xMDAsMTE1IHYzNSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjE1MCIgcj0iMTUiIGNsYXNzPSJzLWdsb3ZlcyIvPjxwYXRoIGNsYXNzPSJzLWNhcGUiIGQ9Ik0xMDAsNzAgTDgwLDEyMCBMMTIwLDEyMCBaIi8+PC9nPjwvZz48L3N2Zz4=");
+        --bg-saitama-cooking: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWFwcm9ue2ZpbGw6I2ZmZn0ucy1nbG92ZXN7ZmlsbDojZTIxZjI2fS5zLXNraW57ZmlsbDojZmNlM2M0fS5zLWxpbmV7ZmlsbDpub25lO3N0cm9rZTojMjQyNDI0O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZH08L3N0eWxlPjwvZGVmcz48ZyBjbGFzcz0icy1saW5lIj48IS0tIENhYmJhZ2UgLS0+PGNpcmNsZSBjeD0iNjAiIGN5PSIxNDAiIHI9IjMwIiBmaWxsPSIjOTBlZTkwIi8+PHBhdGggZD0iTTYwLDExMCBsLTEwLDMwIGwxMCwxMCBsMTAsLTEwIGwxMCwxMCIgc3Ryb2tlPSIjNWE5MDVhIi8+PHBhdGggZD0iTTkwLDE0MCBMMzAsMTQwIiBzdHJva2Utd2lkdGg9IjMiLz48IS0tIFNhaXRhbWEgLS0+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTApIj48cmVjdCB4PSI4NSIgeT0iODAiIHdpZHRoPSIzMCIgaGVpZ2h0PSI1MCIgY2xhc3M9InMtYm9keSIvPjxwYXRoIGQ9Ik04NSA4NSBsMzAgMCB2NDAgbC0xNSAxMCBsLTE1IC0xMCB6IiBjbGFzcz0icy1hcHJvbiIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjYwIiByPSIyMCIgY2xhc3M9InMtc2tpbiIvPjxwYXRoIGQ9Ik05NSw1OCBhMSwxIDAgMSwxIDAsLTAuMDEgTTEwNSw1OCBhMSwxIDAgMSwxIDAsLTAuMDEiLz48cGF0aCBkPSJNOTgsNjUgaDQiLz48cGF0aCBkPSJNODEiw5NSBsLTMwLDMwIi8+PHBhdGggZD0iTTU1LDEyNSBsLTEwLDAgbC01LC01IiBzdHJva2Utd2lkdGg9IjQiLz48L2c+PC9nPjwvc3ZnPg==");
+        --bg-saitama-geometry: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemJvZHl7ZmlsbDojZmVjZjAyfS5zLWNhcGV7ZmlsbDojZmZmfS5zLWJvb3Rze2ZpbGw6I2UyMWYyNn0ucy1za2lue2ZpbGw6I2ZjZTNjNH0ucy1saW5le2ZpbGw6bm9uZTtzdHJva2U6IzI0MjQyNDtzdHJva2Utd2lkdGg6MjtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmR9PC9zdHlsZT48L2RlZnM+PGcgY2xhc3M9InMtbGluZSI+PCEtLSBUZXNzZXJhY3QgLS0+PHJlY3QgeD0iMzAiIHk9IjcwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzg4YzBmMCIvPjxyZWN0IHg9IjUwIiB5PSI5MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSJub25lIiBzdHJva2U9IiM4OGMwZjAiLz48cGF0aCBkPSJNMzAsNzAgeyAyMCwyMCBNOTAsNzAgeyAtMjAsMjAgTTMwLDEzMCBsMjAsLTIwIE05MCwxMzAgeyAtMjAsLTIwIiBzdHJva2U9IiM4OGMwZjAiLz48IS0tIFNhaXRhbWEgLS0+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAsIC0xMCkiPjxwYXRoIGNsYXNzPSJzLWNhcGUiIGQ9Ik0xMDAgNzAgcS0yMCA4MCAwIDEwMCBxMjAgLTIwIDAgLTEwMHoiLz48Y2lyY2xlIGN4PSIxMDAiIGN5PSI2MCIgcj0iMjAiIGNsYXNzPSJzLXNraW4iLz48cGF0aCBkPSJNOTUsNTggYTEsMSAwIDEsMSAwLC0wLjAxIE0xMDUsNTggYTEsMSAwIDEsMSAwLC0wLjAxIi8+PHBhdGggZD0iTTk4LDY1IGg0Ii8+PHJlY3QgeD0iODUiIHk9IjgwIiB3aWR0aD0iMzAiIGhlaWdodD0iNTAiIGNsYXNzPSJzLWJvZHkiLz48cmVjdCB4PSI4NSIgeT0iMTMwIiB3aWR0aD0iMTIiIGhlaWdodD0iMTUiIGNsYXNzPSJzLWJvb3RzIi8+PHJlY3QgeD0iMTAzIiB5PSIxMzAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNSIgY2xhc3M9InMtYm9vdHMiLz48L2c+PC9nPjwvc3ZnPg==");
+        --bg-saitama-science: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48ZGVmcz48c3R5bGU+LnMtemNvYXR7ZmlsbDojZmZmfS5zLXNraW57ZmlsbDojZmNlM2M0fS5zLWxpbmV7ZmlsbDpub25lO3N0cm9rZTojMjQyNDI0O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZH08L3N0eWxlPjwvZGVmcz48ZyBjbGFzcz0icy1saW5lIj48IS0tIE1pY3Jvc2NvcGUgLS0+PHBhdGggZD0iTTgwLDE2MCBINDAgdi0xMCBINDgiLz48cGF0aCBkPSJNNjAsMTUwIFYxMDAgYTIwLDIwIDAgMCwxIDIwLC0yMCBoMjAiLz48cGF0aCBkPSJNMTAwLDgwIFY2MCBINDgiLz48cGF0aCBkPSJNODEiwNjAgTDcwLDQwIi8+PGNpcmNsZSBjeD0iNjAiIGN5PSIxMzAiIHI9IjE1IiBmaWxsPSIjZTBmMGZmIi8+PHBhdGggZD0iTTYwLDEzMCBRNTAsMTIwIDQwLDEzMCIgc3Ryb2tlLXdpZHRoPSIxIi8+PCEtLSBTYWl0YW1hIC0tPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUwLCAyMCkiPjxyZWN0IHg9Ijg1IiB5PSI4MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjUwIiBjbGFzcz0icy1jb2F0Ii8+PHBhdGggZD0iTTg1IDgwIGwxNSAxNSB2MzUgaC0xNSB6IG0zMCAwIGwtMTUgMTUgdiAzNSBoMTUgeiIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjYwIiByPSIyMCIgY2xhc3M9InMtc2tpbiIvPjxwYXRoIGQ9Ik05NSw1OCBhMSwxIDAgMSwxIDAsLTAuMDEgTTEwNSw1OCBhMSwxIDAgMSwxIDAsLTAuMDEiLz48cGF0aCBkPSJNOTgsNjUgaDQiLz48cGF0aCBkPSJNMTAwLDgwIEwxMDAsODUiLz48L2c+PC9nPjwvc3ZnPg==");
+      }
+
+      html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.5s ease-in-out, background-image 0.5s ease-in-out;
+        pointer-events: none;
+      }
+      
+      body.saitama-length::before, body.saitama-weight::before, body.saitama-volume::before, body.saitama-temperature::before, body.saitama-area::before, body.saitama-speed::before, body.saitama-time::before, body.saitama-pressure::before, body.saitama-energy::before, body.saitama-data::before, body.saitama-drilling::before, body.saitama-cooking::before, body.saitama-geometry::before, body.saitama-science::before {
+        opacity: 0.25;
+      }
+      
+      .dark body::before {
+        opacity: 0; 
+      }
+      
+      .dark body.saitama-length::before, .dark body.saitama-weight::before, .dark body.saitama-volume::before, .dark body.saitama-temperature::before, .dark body.saitama-area::before, .dark body.saitama-speed::before, .dark body.saitama-time::before, .dark body.saitama-pressure::before, .dark body.saitama-energy::before, .dark body.saitama-data::before, .dark body.saitama-drilling::before, .dark body.saitama-cooking::before, .dark body.saitama-geometry::before, .dark body.saitama-science::before {
+        opacity: 0.2;
+        filter: invert(1);
+      }
+
+      body.saitama-length::before { background-image: var(--bg-saitama-length); }
+      body.saitama-weight::before { background-image: var(--bg-saitama-weight); }
+      body.saitama-volume::before { background-image: var(--bg-saitama-volume); }
+      body.saitama-temperature::before { background-image: var(--bg-saitama-temperature); }
+      body.saitama-area::before { background-image: var(--bg-saitama-area); }
+      body.saitama-speed::before { background-image: var(--bg-saitama-speed); }
+      body.saitama-time::before { background-image: var(--bg-saitama-time); }
+      body.saitama-pressure::before { background-image: var(--bg-saitama-pressure); }
+      body.saitama-energy::before { background-image: var(--bg-saitama-energy); }
+      body.saitama-data::before { background-image: var(--bg-saitama-data); }
+      body.saitama-drilling::before { background-image: var(--bg-saitama-drilling); }
+      body.saitama-cooking::before { background-image: var(--bg-saitama-cooking); }
+      body.saitama-geometry::before { background-image: var(--bg-saitama-geometry); }
+      body.saitama-science::before { background-image: var(--bg-saitama-science); }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-opm-cape-white dark:bg-opm-dark">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
