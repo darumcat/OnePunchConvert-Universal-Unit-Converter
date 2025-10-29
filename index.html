@@ -4,6 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/assets/saitama-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#e21f26">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="OnePunchConvert">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/assets/saitama-icon-192.png">
+    
+    <!-- MS Application -->
+    <meta name="msapplication-TileColor" content="#e21f26">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
     <title>OnePunchConvert: Universal Unit Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -133,5 +148,21 @@
   <body class="bg-opm-cape-white dark:bg-opm-dark">
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
