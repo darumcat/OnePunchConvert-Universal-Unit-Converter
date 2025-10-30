@@ -19,7 +19,10 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies
-      run: npm install
+      run: |
+        # Принудительно создаем package-lock.json
+        npm install --package-lock-only --no-save
+        npm ci
 
     - name: Build Project
       run: npm run build
