@@ -3,6 +3,7 @@ const urlsToCache = [
   '/',
   '/index.html',
   '/index.tsx',
+  '/index.css',
   '/manifest.json',
   '/assets/saitama-icon-192.png',
   '/assets/saitama-icon-512.png'
