@@ -2,7 +2,6 @@ const CACHE_NAME = 'onepunchconvert-v1.0.0';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/index.css',
   '/index.tsx',
   '/manifest.json',
   '/assets/saitama-icon-192.png',
