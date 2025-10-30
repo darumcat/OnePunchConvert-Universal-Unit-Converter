@@ -13,16 +13,28 @@
   "dir": "ltr",
   "icons": [
     {
-      "src": "saitama-icon-192.png",
+      "src": "assets/saitama-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"  // ✅ для обычного использования
     },
     {
-      "src": "saitama-icon-512.png",
+      "src": "assets/saitama-icon-maskable-192.png", 
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"  // ✅ для адаптивных иконок
+    },
+    {
+      "src": "assets/saitama-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png", 
+      "purpose": "any"
+    },
+    {
+      "src": "assets/saitama-icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     }
   ]
 }
